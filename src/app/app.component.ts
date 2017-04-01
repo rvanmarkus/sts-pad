@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MdToolbar} from "@angular/material";
+import {MidiSelectorComponent} from "./midi/midi-selector.component";
 
 @Component({
   selector: 'app-root',
