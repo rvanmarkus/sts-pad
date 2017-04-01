@@ -1,8 +1,22 @@
 <div>
   <h1 md-dialog-title>Choose MIDI interface</h1>
   <div md-dialog-content>Which MIDI device should be used?</div>
+  <md-radio-group class="example-radio-group" [(ngModel)]="selectedInput">
+    <md-radio-button class="example-radio-button" *ngFor="let input of $inputs | async" [value]="input">
+      {{input?.name}}
+    </md-radio-button>
+  </md-radio-group>
+
+  <md-radio-group class="example-radio-group" [(ngModel)]="selectedOutput">
+    <md-radio-button class="example-radio-button" *ngFor="let output of $outputs | async" [value]="output">
+      {{output?.name}}
+    </md-radio-button>
+  </md-radio-group>
   <div md-dialog-actions>
-    <button md-button (click)="dialogRef.close('Option 1')">Option 1</button>
-    <button md-button (click)="dialogRef.close('Option 2')">Option 2</button>
-</div>
+    <button
+      md-button
+      (click)="dialogRef.close({input:selectedInput, output:selectedOutput})">
+      Set MIDI
+    </button>
+  </div>
 </div>

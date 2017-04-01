@@ -1,2 +1,2 @@
-<button md-button (click)="openDialog()">MIDI</button>
-Current MIDI input/output: {{selectedOption}}
+<button md-button [hidden]="selectedInput" (click)="openDialog()">MIDI {{selectedInput?.name}}</button>
+<button md-button [hidden]="!selectedInput" (click)="openDialog()"></button>

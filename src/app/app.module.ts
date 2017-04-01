@@ -7,6 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import {MidiSelectorComponent} from "./midi/midi-selector.component";
 import {MidiSelectorDialog} from "./midi/midi-selector-dialog";
+import {MIDIService} from "./midi/midi-service";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import {MidiSelectorDialog} from "./midi/midi-selector-dialog";
     AppComponent,
     MidiSelectorDialog
   ],
-  providers: [],
+  providers: [MIDIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
