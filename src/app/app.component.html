@@ -1,3 +1,10 @@
-<md-toolbar color="primary">Demo Control
-  <midi-selector></midi-selector>
-</md-toolbar>
+<div layout="column" flex>
+  <md-toolbar color="primary">Demo Control
+    <midi-selector></midi-selector>
+  </md-toolbar>
+  <gridster [options]="options" flex>
+    <gridster-item [item]="item" *ngFor="let item of dashboard">
+      <!-- your content here -->
+    </gridster-item>
+  </gridster>
+</div>

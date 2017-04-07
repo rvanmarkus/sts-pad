@@ -1,0 +1,11 @@
+{
+  "scripts": [
+    {
+      "name": "step1",
+      "path": "/Users/robbertvanmarkus/Projects/StackStateInstallation/sts-agent-simulator/step_1.sh"
+    }, {
+      "name": "step2",
+      "path": "/Users/robbertvanmarkus/Projects/StackStateInstallation/sts-agent-simulator/step_2.sh"
+    }
+  ]
+}

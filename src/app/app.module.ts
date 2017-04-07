@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import {MidiSelectorComponent} from "./midi/midi-selector.component";
 import {MidiSelectorDialog} from "./midi/midi-selector-dialog";
 import {MIDIService} from "./midi/midi-service";
+import {GridsterModule} from "angular-gridster2";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {MIDIService} from "./midi/midi-service";
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule
+    MaterialModule,
+    GridsterModule
   ],
   entryComponents: [
     AppComponent,

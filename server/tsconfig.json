@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "removeComments": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "noLib": false,
+    "jsx": "react",
+    "outDir": "server-es6",
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "noImplicitAny": true
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "example"
+  ]
+}
