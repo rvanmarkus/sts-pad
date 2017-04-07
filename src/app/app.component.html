@@ -2,9 +2,11 @@
   <md-toolbar color="primary">Demo Control
     <midi-selector></midi-selector>
   </md-toolbar>
-  <gridster [options]="options" flex>
-    <gridster-item [item]="item" *ngFor="let item of dashboard">
-      <!-- your content here -->
-    </gridster-item>
-  </gridster>
+  <div layout="column" class="pad-grid">
+    <div class="pad-row" *ngFor="let row of padGrid.rows" layout="row" flex>
+      <div class="pad-cell" *ngFor="let cell of row.cells" layout="column">
+        <button md-button flex>{{cell.script.name}}</button>
+      </div>
+    </div>
+  </div>
 </div>

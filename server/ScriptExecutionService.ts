@@ -1,6 +1,6 @@
 import * as cp from 'child_process';
-import {Script} from "./ScriptExecutionController";
 import {Service} from "typedi";
+import {Script} from "../src/app/script";
 
 @Service()
 export class ScriptExecutionService {

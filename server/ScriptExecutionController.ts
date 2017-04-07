@@ -1,13 +1,10 @@
 import {JsonController, Param, Body, Get, Post, Put, Delete} from "routing-controllers";
 import {ScriptExecutionService} from "./ScriptExecutionService";
 import {Service} from "typedi";
+import {Script} from "../src/app/script";
 
 export interface ConfigInterface {
   scripts: Script[];
-}
-export interface Script {
-  name: string;
-  path: string;
 }
 
 @Service()

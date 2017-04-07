@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -9,6 +8,8 @@ import {MidiSelectorComponent} from "./midi/midi-selector.component";
 import {MidiSelectorDialog} from "./midi/midi-selector-dialog";
 import {MIDIService} from "./midi/midi-service";
 import {GridsterModule} from "angular-gridster2";
+import { HttpModule, JsonpModule } from '@angular/http';
+import {ExecuteService} from "./execute.service";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {GridsterModule} from "angular-gridster2";
     BrowserModule,
     FormsModule,
     HttpModule,
+    JsonpModule,
     MaterialModule,
     GridsterModule
   ],
@@ -27,7 +29,10 @@ import {GridsterModule} from "angular-gridster2";
     AppComponent,
     MidiSelectorDialog
   ],
-  providers: [MIDIService],
+  providers: [
+    MIDIService,
+    ExecuteService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
