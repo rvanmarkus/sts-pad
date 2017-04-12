@@ -10,6 +10,7 @@ import {MIDIService} from "./midi/midi-service";
 import {GridsterModule} from "angular-gridster2";
 import { HttpModule, JsonpModule } from '@angular/http';
 import {ExecuteService} from "./execute.service";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {ExecuteService} from "./execute.service";
     HttpModule,
     JsonpModule,
     MaterialModule,
-    GridsterModule
+    GridsterModule,
+    FlexLayoutModule
   ],
   entryComponents: [
     AppComponent,

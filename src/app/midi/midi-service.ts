@@ -78,6 +78,10 @@ export class LaunchPadMIDIOutputMessage implements MidiOutputMessage {
     return [this.key, this.note, this.velocity];
   }
 
+  setColor(color: GRID_LED_COLORS) {
+    this._color = color;
+  }
+
   setColumn(column: number): void {
     this._column = column;
   }

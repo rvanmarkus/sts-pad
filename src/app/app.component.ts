@@ -4,7 +4,7 @@ import {MidiSelectorComponent} from "./midi/midi-selector.component";
 import {MIDIService} from "./midi/midi-service";
 import {GridsterConfig} from "angular-gridster2/dist/gridsterConfig.interface";
 import {ExecuteService} from "./execute.service";
-import {PadGrid, PadRow, PadCell} from "./pad-grid";
+import {PadGrid, PadRow, IPadCell} from "./pad-grid/pad-grid";
 import {Script} from "./script";
 
 @Component({
@@ -15,28 +15,13 @@ import {Script} from "./script";
 })
 export class AppComponent implements OnInit{
   title = 'app works!';
-  padGrid: PadGrid = {
-    rows: [
-      <PadRow> {
-        cells: [
-          <PadCell> {
-            script: <Script> {
-              name: 'step1',
-              path: 'step1.sh'
-            },
-            index:0
-          }
-        ],
-        index: 0
-      }
-    ]
-  };
+  padGrid: PadGrid = new PadGrid();
   constructor(midiService: MIDIService,
               execute: ExecuteService) {
-    console.log('service', midiService);
+    console.log('pad', this.padGrid);
   }
 
   ngOnInit() {
-
+    this.padGrid.createEmptyLaunchpadGrid();
   };
 }

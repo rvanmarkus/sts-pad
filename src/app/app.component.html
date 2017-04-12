@@ -1,11 +1,11 @@
-<div layout="column" flex>
+<div fxLayout="column" fxFlex>
   <md-toolbar color="primary">Demo Control
     <midi-selector></midi-selector>
   </md-toolbar>
-  <div layout="column" class="pad-grid">
-    <div class="pad-row" *ngFor="let row of padGrid.rows" layout="row" flex>
-      <div class="pad-cell" *ngFor="let cell of row.cells" layout="column">
-        <button md-button flex>{{cell.script.name}}</button>
+  <div class="pad-grid" fxLayout="column" fxLayout.xs="column" style="height:90vh;" fxLayoutAlign="space-around">
+    <div class="pad-row" *ngFor="let row of padGrid.rows" fxLayout="row" fxLayoutAlign="space-around">
+      <div class="pad-cell" *ngFor="let cell of row.cells">
+        <button md-button md-raised-button fxFlex class="md-launchpad-button">{{cell.script.name}}</button>
       </div>
     </div>
   </div>
