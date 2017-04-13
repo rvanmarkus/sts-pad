@@ -25,6 +25,7 @@ export class MIDIService {
   $connectedOutputs: Subject<MIDIOutputMap> = new BehaviorSubject(null);
   $connectedInputs: Subject<MIDIInputMap> = new BehaviorSubject(null);
   $inputMessages: Subject<any>= new Subject();
+
   $outputMessages: Subject<LaunchPadMIDIOutputMessage[]> = new Subject();
   constructor() {
     let $midiAccess = this.requestMIDIAccess()
@@ -51,6 +52,7 @@ export class MIDIService {
   }
   setCurrentMIDIOutput(output: MIDIOutput) {
     this.$outputMessages.subscribe((msgs: LaunchPadMIDIOutputMessage[]) => {
+      console.log('output', msgs);
       output.send([176, 0, 0]);
       msgs.map((key) => output.send(key.getKeyMessage()));
     });

@@ -13,9 +13,13 @@ export interface IPadCell {
   script?: Script;
   onCellPressed(e : Event);
 }
+export enum SCRIPT_STATES {
+  SCRIPT_STARTED, SCRIPT_RUNNING, SCRIPT_FAILED, SCRIPT_FINSHED
+}
 
 export class ScriptPadCell implements IPadCell {
   running?: Observable<any>;
+  state?: SCRIPT_STATES;
   constructor(public index: number, public script?: Script) {
   }
   onCellPressed(e){
@@ -47,7 +51,7 @@ export class PadGrid {
   toLaunchPadMIDIOutputMessages(): LaunchPadMIDIOutputMessage[] {
     let outputMessages = [];
     this.rows.forEach(row => {
-      outputMessages.concat(... row.cells.map(cell => this.transformCellToLaunchPadOutputMessage(cell, row)))
+      outputMessages.push(... row.cells.map(cell => this.transformCellToLaunchPadOutputMessage(cell, row)))
     });
     return outputMessages;
   }
@@ -58,6 +62,8 @@ export class PadGrid {
     midi.setColumn(cell.index);
     if (cell.running) {
       midi.setColor(GRID_LED_COLORS.RED)
+    } else {
+      midi.setColor(GRID_LED_COLORS.YELLOW)
     }
     return midi;
   }
