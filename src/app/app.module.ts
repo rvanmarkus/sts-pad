@@ -11,11 +11,13 @@ import {GridsterModule} from "angular-gridster2";
 import { HttpModule, JsonpModule } from '@angular/http';
 import {ExecuteService} from "./execute.service";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {ScriptSelectDialog} from "./script/script-select-dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     MidiSelectorDialog,
+    ScriptSelectDialog,
     MidiSelectorComponent
   ],
   imports: [
@@ -29,7 +31,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
   ],
   entryComponents: [
     AppComponent,
-    MidiSelectorDialog
+    MidiSelectorDialog,
+    ScriptSelectDialog
   ],
   providers: [
     MIDIService,

@@ -1,5 +1,6 @@
 import {Script} from "../script";
 import {LaunchPadMIDIOutputMessage, GRID_LED_COLORS} from "../midi/midi-service";
+import {Observable} from "rxjs";
 
 export interface PadRow {
   cells: IPadCell[];
@@ -8,36 +9,39 @@ export interface PadRow {
 
 export interface IPadCell {
   index: number;
-  running?: boolean;
-  script: Script;
+  running?: Observable<any>;
+  script?: Script;
+  onCellPressed(e : Event);
 }
 
 export class ScriptPadCell implements IPadCell {
-  running?: boolean = false;
-
-  constructor(public index: number, public script: Script) {
+  running?: Observable<any>;
+  constructor(public index: number, public script?: Script) {
+  }
+  onCellPressed(e){
+    console.log('cell pressed', e);
   }
 }
 
 export class PadGrid {
-  numberOfRows: number = 8;
-  numberOfCols: number = 8;
-
   constructor(public rows: PadRow[] = []) {
 
   }
 
-  createEmptyLaunchpadGrid() {
-    for (let i = 0; i < this.numberOfRows; i++) {
-      this.rows.push(<PadRow>{
+  static createEmptyLaunchpadGrid(numberOfRows, numberOfCols) {
+    let rows: PadRow[] = [];
+    for (let i = 0; i < numberOfRows; i++) {
+      rows.push(<PadRow>{
         index: i,
-        cells: Array.from(new Array(this.numberOfCols).keys())
-          .map((cell, i) => new ScriptPadCell(i, {
-            name: '-',
-            path: 'step1.sh'
-          }))
+        cells: Array.from(new Array(numberOfCols).keys())
+          .map((cell, i) => new ScriptPadCell(i))
       })
     }
+    return new PadGrid(rows);
+  }
+
+  addRow(row: PadRow){
+    this.rows.push(row);
   }
 
   toLaunchPadMIDIOutputMessages(): LaunchPadMIDIOutputMessage[] {

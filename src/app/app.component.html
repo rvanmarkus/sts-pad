@@ -5,7 +5,7 @@
   <div class="pad-grid" fxLayout="column" fxLayout.xs="column" style="height:90vh;" fxLayoutAlign="space-around">
     <div class="pad-row" *ngFor="let row of padGrid.rows" fxLayout="row" fxLayoutAlign="space-around">
       <div class="pad-cell" *ngFor="let cell of row.cells">
-        <button md-button md-raised-button fxFlex class="md-launchpad-button">{{cell.script.name}}</button>
+        <button md-button md-raised-button fxFlex class="md-launchpad-button" [style.background]="(cell?.running | async)?.execution ? 'red':''" (click)="onCellPressed(cell, $event)">{{cell.script?.name || 'hoi'}}</button>
       </div>
     </div>
   </div>

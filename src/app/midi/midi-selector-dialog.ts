@@ -18,8 +18,12 @@ export class MidiSelectorDialog {
   selectedOutput:MIDIOutput;
 
   constructor(public dialogRef: MdDialogRef<MidiSelectorDialog>, midiService: MIDIService) {
-    this.$inputs = midiService.$connectedInputs.map((inputMap : MIDIInputMap) => Array.from(inputMap.values()));
-    this.$outputs = midiService.$connectedOutputs.map((outputMap : MIDIOutputMap) => Array.from(outputMap.values()));
+    this.$inputs = midiService.$connectedInputs
+      .map((inputMap : MIDIInputMap) => Array.from(inputMap.values()));
+
+    this.$outputs = midiService.$connectedOutputs
+      .map((outputMap : MIDIOutputMap) => Array.from(outputMap.values()));
+
     this.$inputs.subscribe((e) => {
       console.log('eeee',e);
     });

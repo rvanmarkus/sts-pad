@@ -1,0 +1,16 @@
+<div>
+  <h1 md-dialog-title>Choose Script to run</h1>
+  <div md-dialog-content>
+
+    <md-select placeholder="Select a script to run" [(ngModel)]="selectedScript">
+      <md-option *ngFor="let script of $availableScripts | async" [value]="script">{{ script.name }}</md-option>
+    </md-select>
+
+  </div>
+  <div md-dialog-actions>
+    <button
+      md-button (click)="dialogRef.close(selectedScript)">
+      Save
+    </button>
+  </div>
+</div>
